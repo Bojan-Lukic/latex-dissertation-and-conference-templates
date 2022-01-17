@@ -1,0 +1,331 @@
+\documentclass[12pt, a4paper, bibtotoc, numbers=noenddot]{scrreprt}
+
+
+\usepackage[sorting=none]{biblatex}
+\usepackage{xr}
+\externaldocument{13Chapter3}
+\usepackage[main=british,ngerman]{babel}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{listings, lstautogobble}
+%\lstset{language=Python, basicstyle=\footnotesize, autogobble=true,}
+\lstdefinestyle{mystyle}{
+	literate=*{=}{{\bfseries\textcolor{codepurple}{=}}}{1}
+	{==}{{\bfseries\textcolor{codepurple}{==}}}{2}
+	{*}{{\bfseries\textcolor{codepurple}{*}}}{1}
+	{+}{{\bfseries\textcolor{codepurple}{+}}}{1}
+	{<}{{\bfseries\textcolor{codepurple}{<}}}{1}
+	{>}{{\bfseries\textcolor{codepurple}{>}}}{1}
+	{>=}{{\bfseries\textcolor{codepurple}{>=}}}{2}
+	{<=}{{\bfseries\textcolor{codepurple}{<=}}}{2}
+	{True}{{\bfseries\textcolor{codegreen}{True}}}{4}
+	{False}{{\bfseries\textcolor{codegreen}{False}}}{5}
+	{1}{{\textcolor{codegreen}{1}}}{1},
+	commentstyle=\color{teal},
+	keywordstyle=\bfseries\color{codegreen},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{red},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true, 
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	numbers=left,
+	numbersep=5pt, 
+	xleftmargin=2em,
+	framexleftmargin=1.5em,
+	escapeinside=||
+}
+\lstset{style=mystyle}
+\let\origthelstnumber\thelstnumber
+\makeatletter
+\newcommand*\Suppressnumber{%
+	\lst@AddToHook{OnNewLine}{%
+		\let\thelstnumber\relax%
+		\advance\c@lstnumber-\@ne\relax%
+	}%
+}
+\newcommand*\Reactivatenumber[1]{%
+	\setcounter{lstnumber}{\numexpr#1-1\relax}
+	\lst@AddToHook{OnNewLine}{%
+		\let\thelstnumber\origthelstnumber%
+		\refstepcounter{lstnumber}
+	}%
+}
+\makeatother
+
+\usepackage{notoccite}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\addtokomafont{disposition}{\rmfamily}
+\setlength{\emergencystretch}{1em}
+\PassOptionsToPackage{hyphens}{url}
+
+\usepackage{svg}
+\usepackage{pdflscape}
+\usepackage[toc,page]{appendix}
+\usepackage{hyphenat}
+\usepackage[style=english]{csquotes}
+\usepackage{totpages}
+
+\usepackage{datetime}
+\newdateformat{britishdate}{\ordinal{DAY} \monthname[\THEMONTH] \THEYEAR}
+\newdateformat{germandate}{\THEDAY.\,\monthname[\THEMONTH] \THEYEAR}
+
+\usepackage[format=plain, justification=centering]{caption}
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\usepackage{array,longtable,multirow}
+
+\usepackage{tabularx}
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcommand{\leftrighttext}[3][10em]{% 
+	\begin{tabularx}{\linewidth}[t]{@{}Xp{#1}@{}} 
+		#2 & #3 
+	\end{tabularx}% 
+}
+
+\usepackage{booktabs}
+\usepackage{mathtools,mathcomp,amsmath,amssymb,amsfonts,array}
+\usepackage{upgreek}
+\usepackage{extarrows}
+\usepackage[shortcuts]{extdash}
+\usepackage{xfrac}
+
+\usepackage{nicefrac,siunitx,units}
+\DeclareSIUnit\Darcy{D}
+\DeclareSIUnit\wtpercent{\textsubscript{wt}\%}
+\DeclareSIUnit\volpercent{\textsubscript{vol}\%}
+\DeclareSIUnit\molpercent{\textsubscript{mol}\%}
+
+\usepackage{graphics, graphicx, graphbox}
+\usepackage{tikz}
+\usepackage{blindtext,wrapfig}
+\makeatletter
+\newcommand\wrapfill{\par
+	\ifx\parshape\WF@fudgeparshape
+	\nobreak
+	\vskip-\baselineskip
+	\vskip\c@WF@wrappedlines\baselineskip
+	\allowbreak
+	\WFclear
+	\fi
+}
+\makeatother 
+\usepackage{fancyhdr}
+
+%% Control of length head
+\newlength\FHoffset
+\setlength\FHoffset{-0cm}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+
+%% Control of length foot
+\newlength\FFoffset
+\setlength\FFoffset{-0cm}
+\addtolength\headwidth{2\FFoffset}
+\fancyfootoffset{\FFoffset}
+
+%% Control of with and colour of head/foot
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \footrulewidth\hfill}}
+
+%% Set different pagestyles
+\fancypagestyle{plain}{%
+	\fancyhf{} % clear all header and footer fields
+	\fancyfoot[R]{\thepage} % except the center
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}}
+%
+\fancypagestyle{new}{
+\fancyhf{} %clears plain style
+\addtolength{\headheight}{\baselineskip}
+\fancyhead[R]{\leftmark}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}%
+%define \leftmark style, add another "#" for debugging
+%\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{\MakeUppercase{%
+			\chaptername}\ \thechapter.%
+		\ ##1}{}}
+}
+%
+\fancypagestyle{appendix}{
+	\fancyhf{} %clears plain style
+	\addtolength{\headheight}{\baselineskip}
+	\fancyhead[R]{\appendixname}
+	\fancyfoot[R]{\thepage}
+	\renewcommand{\headrulewidth}{1pt}
+	\renewcommand{\footrulewidth}{0pt}%
+	%define \leftmark style, add another "#" for debugging
+	%\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+	\renewcommand{\chaptermark}[1]{%
+		\markboth{\MakeUppercase{%
+				\chaptername}\ \thechapter.%
+			\ ##1}{}}
+}
+%
+\renewcommand*\chapterpagestyle{plain} 
+
+
+%%%%% Fonts %%%%%
+%% With XeLaTeX and the following option it is possible to costumise the fonts and even use Windows fonts like Times New Roman or Arial. For ITE thesis it is best to stay with the default settings
+\usepackage{lmodern}
+\fontfamily{lmr}\selectfont
+
+\usepackage[version=3]{mhchem}
+
+
+%%%%% Chapter and section settings %%%%%
+%% Set list of tables, figures and others in section style
+\makeatletter
+\renewcommand\listoftables{%
+	\subsection*{\listtablename}%
+	\@mkboth{\MakeUppercase\listtablename}%
+	{\MakeUppercase\listtablename}%
+	\@starttoc{lot}%
+}
+\renewcommand\listoffigures{%
+	\subsection*{\listfigurename}%
+	\@mkboth{\MakeUppercase\listfigurename}%
+	{\MakeUppercase\listfigurename}%
+	\@starttoc{lof}%
+}
+\makeatother
+
+%% Remove chaptercounter for figure and table numbering
+\usepackage{chngcntr}
+%\counterwithout{figure}{chapter}
+%\counterwithout{table}{chapter}
+
+%% Optimises skip between chapter and header for Bachelor and Master Thesis. Can be diabled for Doctoral Thesis.
+%\vspace*{2.3\baselineskip} = ORIGINAL 
+\renewcommand*{\chapterheadstartvskip}{\vspace*{.5\baselineskip}}% Abstand einstellen
+
+%% Set counters for sections/subsections/subsubsections to be displayed in the toc (table of contents)
+%\setcounter{tocdepth}{1}
+%\setcounter{secnumdepth}{1}
+
+
+%%%Colors%%%
+\definecolor{ITEgrey}{HTML}{58595b}
+\definecolor{TUCgreen}{RGB}{0 140 79}
+\definecolor{TUCred}{RGB}{140 28 0}
+\definecolor{TUCdarkgrey}{RGB}{128 128 128}
+\definecolor{TUClightgrey}{RGB}{230 230 230}
+\definecolor{Word}{HTML}{2a579a}
+
+
+%%%% Others %%%%%
+%% Hyperref for references of chapters, sections, tables, figures etc. in text. Should be loaded as last package to not interfere with some other packages. If loaded before glossaries, entries are hyperlinked.
+\usepackage[bookmarksnumbered=true]{hyperref}
+
+
+%%%%% Glossaries and textreferences %%%%%    
+\usepackage{fancyref}
+
+\usepackage[nonumberlist,acronym,section=subsection]{glossaries}
+\newglossarystyle{myglossarystyle}{%
+	\renewenvironment{theglossary}{%
+		\begin{labeling}{xxxxxxxxxx}}{\end{labeling}}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\item[\glstarget{##1}{##2}]% Eintragsname:
+		\ifthenelse{\equal{##4}{\relax}}{}{\space (##4)}% (Symbol)
+		\space ##3% Beschreibung
+		%\dotfill ##5% ...Seitenzahl
+	}%
+}
+
+%% New glossary types to have extra glossaries for units etc.
+%\newglossary[slg]{symbols}{sym}{sbl}{Symbols}
+%\renewcommand*{\glspostdescription}{}
+
+%\newglossary[un]{units}{uni}{ut}{Units}
+%\renewcommand*{\glspostdescription}{}
+
+\makenoidxglossaries
+\setglossarystyle{myglossarystyle}
+%% In this files are your acronyms and other abbreviations. They have to be refferd to in the document (including the units!) to be listed in the glossaries.
+%\loadglsentries{Glossar_symbols.tex}
+%\loadglsentries{Glossar_units.tex}
+\loadglsentries{Glossar_acronyms.tex}
+%\glsdisablehyper %Disables hyperrefed glossary entries
+
+\usepackage{tocstyle}
+\newtocstyle[KOMAlike][leaders]{alldotted}{}
+\usetocstyle{alldotted}
+
+
+%%%%% Your data %%%%%
+\author{John Johnson}
+\newdate{birthday}{01}{01}{1990}
+\title{Lorem Ipsum}
+%\newdate{hand-in}{01}{01}{2019} %Set the date of your thesis hand in
+\newdate{hand-in}{\day}{\month}{\year} %Uses todays date as hand-in date
+
+\bibliography{Literature.bib}
+
+\providecommand{\keywords}[1]
+{
+	\small	
+	\textbf{\textit{Keywords:}} #1
+}
+\providecommand{\keywordsG}[1]
+{
+	\small	
+	\textbf{\textit{Schlüsselwörter:}} #1
+}
+
+
+\begin{document}
+\pagenumbering{Roman}
+\include{01Preamble}
+\pagestyle{plain}
+\include{01Summary}
+\include{01Acknowledgements}
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\listoffigures
+%\listofschemes
+\listoftables	
+%\printglossary[title=Glossary]
+%\addcontentsline{toc}{subsection}{Glossary}
+\printnoidxglossary[type=\acronymtype,title={Abbreviations}]
+%\addcontentsline{toc}{subsection}{Abbreviations}
+%\printglossary[type=symbols]
+%\addcontentsline{toc}{subsection}{Symbols}
+%\printglossary[type=units]
+%\addcontentsline{toc}{subsection}{Units}
+\cleardoublepage
+\pagenumbering{arabic}
+\pagestyle{new}
+
+\include{10Introduction}
+\include{11Chapter1}
+\include{12Chapter2}
+\include{13Chapter3}
+\include{14Chapter4}
+\include{15Chapter5}
+\include{16Chapter6}
+\include{21Conclusion}
+\newpage
+\renewcommand{\bibname}{References}
+
+\printbibliography
+\include{30Appendix}
+\end{document}
+
+
+%Tipps und Tricks:
+%\section[short title]{title}\label{key} für \nameref{label}, wenn Literaturstelle im Titel wird bei nameref der short title genutzt
