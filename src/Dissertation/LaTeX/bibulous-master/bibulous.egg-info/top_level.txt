@@ -1,3 +1,0 @@
-bibulous_authorextract
-bibulous_test
-bibulous
