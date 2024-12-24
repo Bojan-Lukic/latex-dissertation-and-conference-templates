@@ -82,7 +82,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-To be updated.
+LaTeX templates for generic dissertations as well as conference papers. The template for the dissertation is a modification of the template from [here](https://www.ite.tu-clausthal.de/studium/abschlussarbeiten/vorlagen). The conference template is in the style of IEEE, just more generic. 
 
 <br />
 
@@ -129,18 +129,6 @@ This is an example of how to list things you need to use the software and how to
 
 <br />
 -->
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-To be updated.
-
-_For more examples, please refer to the docs_
-
-<br />
-
 
 
 <!-- ROADMAP -->
