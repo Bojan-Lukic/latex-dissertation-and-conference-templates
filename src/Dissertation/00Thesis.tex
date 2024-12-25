@@ -1,12 +1,12 @@
-\documentclass[12pt, a4paper, bibtotoc, numbers=noenddot]{scrreprt}
+\documentclass[12pt, a4paper, bibtotoc, numbers=noenddot, toc=chapterentrywithdots]{scrreprt}
 
 
+\usepackage[utf8]{inputenc}
 \usepackage[sorting=none]{biblatex}
 \usepackage{xr}
 \externaldocument{13Chapter3}
 \usepackage[main=british,ngerman]{babel}
 \usepackage[onehalfspacing]{setspace}
-\usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage{listings, lstautogobble}
 %\lstset{language=Python, basicstyle=\footnotesize, autogobble=true,}
@@ -60,7 +60,7 @@
 \makeatother
 
 \usepackage{notoccite}
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[dvipsnames,svgnames,table]{xcolor}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -98,7 +98,7 @@
 \usepackage[shortcuts]{extdash}
 \usepackage{xfrac}
 
-\usepackage{nicefrac,siunitx,units}
+\usepackage{nicefrac,siunitx}
 \DeclareSIUnit\Darcy{D}
 \DeclareSIUnit\wtpercent{\textsubscript{wt}\%}
 \DeclareSIUnit\volpercent{\textsubscript{vol}\%}
@@ -234,7 +234,7 @@
 %%%%% Glossaries and textreferences %%%%%    
 \usepackage{fancyref}
 
-\usepackage[nonumberlist,acronym,section=subsection]{glossaries}
+\usepackage[nonumberlist,acronym,section=subsection]{glossaries}[=v4.46]
 \newglossarystyle{myglossarystyle}{%
 	\renewenvironment{theglossary}{%
 		\begin{labeling}{xxxxxxxxxx}}{\end{labeling}}%
@@ -261,9 +261,9 @@
 \loadglsentries{Glossar_acronyms.tex}
 %\glsdisablehyper %Disables hyperrefed glossary entries
 
-\usepackage{tocstyle}
-\newtocstyle[KOMAlike][leaders]{alldotted}{}
-\usetocstyle{alldotted}
+%\usepackage{tocstyle}
+%\newtocstyle[KOMAlike][leaders]{alldotted}{}
+%\usetocstyle{alldotted}
 
 
 %%%%% Your data %%%%%
